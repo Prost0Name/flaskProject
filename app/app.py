@@ -3,8 +3,8 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
-    return "Hello, Flask with Nginx and Docker!"
+def home():
+    return "Hello, World! This is a Flask app running with Docker and Nginx."
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

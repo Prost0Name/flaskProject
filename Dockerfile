@@ -1,13 +1,17 @@
 # Используем базовый образ Python
-FROM python:3.9-slim
+FROM python:3.11
 
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем файлы
-COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
+# Копируем файлы приложения
+COPY app/ .
 
-# Запуск приложения
+# Устанавливаем зависимости
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Открываем порт для Flask
+EXPOSE 5000
+
+# Запускаем Flask сервер
 CMD ["python", "app.py"]
